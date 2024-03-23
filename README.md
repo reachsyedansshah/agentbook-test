@@ -37,8 +37,8 @@ JWT_SECRET= A secret key for JWT signing.
 
 ### Installation
 ```bash
-git clone [your-repo-link]
-cd [your-repo-name]
+git clone https://github.com/reachsyedansshah/agentbook-test.git
+cd 
 npm install 
 npm run doc
 npm start
