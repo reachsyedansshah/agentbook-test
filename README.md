@@ -22,12 +22,14 @@ Robust backend application designed for managing user profiles and authenticatio
 - Node.js
 - Express.js
 - MongoDB
+- React
 
 ## Setup and Installation
 
 ### Prerequisites
 - Node.js
 - MongoDB
+_ React
 
 ## Environment Configuration
 Set up the required environment variables in a .env file:
@@ -38,14 +40,19 @@ JWT_SECRET= A secret key for JWT signing.
 ### Installation
 ```bash
 git clone https://github.com/reachsyedansshah/agentbook-test.git
-cd 
+cd Backend
 npm install 
 npm run doc
 npm start
+cd Frontend
+npm install
+npm run dev
 ```
 
 ## API Documentation
 API detailed documentation can be viewed in docs folder. open index.html
+for the Postman collection, open this:
+https://www.postman.com/grey-spaceship-992954/workspace/agentbook/collection/29412604-c45514ba-f2d4-44ef-8ef0-f51a6ee7d50d?action=share&creator=29412604
 
 ## Authors and Acknowledgment
 Syed Ans Shah
