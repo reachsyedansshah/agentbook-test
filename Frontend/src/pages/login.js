@@ -4,7 +4,6 @@ import API from '../utils/axios';
 import { Container, TextField, Button, Typography } from '@mui/material';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { blue } from '@mui/material/colors';
 import Cookies from 'js-cookie';
 
 export default function Login() {
@@ -18,7 +17,7 @@ export default function Login() {
     try {
       const response = await API.post('/auth/login', { email, password });
       
-      Cookies.set('token', response.data.token, { expires: 7 }); // Expires in 7 days 
+      Cookies.set('token', response.data.token, { expires: 7 });
       setErrorMessage(null)
      
       router.push('/');
