@@ -6,6 +6,8 @@ const authMiddleware = require('../middlewares/authMiddleware');
 const upload = require("../utils/fileUploader")
 const { updateUserValidationSchema } = require('../validators/userValidator');
 
+//Fetch Profile
+router.get('/profile', authMiddleware, userController.getUserProfile);
 //Update Profile
 router.put('/profile', authMiddleware, upload.single('avatar'), validateRequest(updateUserValidationSchema),  userController.updateUserProfile);
 // Upload avatar

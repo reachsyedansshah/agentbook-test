@@ -3,6 +3,48 @@ const logger = require('../utils/logger');
 const Analytics = require('../models/analyticsModel');
 
 /**
+ * Get User Profile API
+ ** Get
+ * Allows authenticated users to fetch their profile information.
+ * user's ID is stored in req.user.userId.
+ * 
+ * @param {Object} req - The Express request object.
+ * @param {Object} res - The Express response object.
+ * @returns {Object} JSON response with updated user data or error message.
+ */
+ exports.getUserProfile = async (req, res) => {
+    try {
+        const userId = req.user.userId;  
+
+        const fetchUserProfile = await User.findById(userId).select('-password');
+
+        if (!fetchUserProfile) {
+            logger.error(`Error - User not found - ${new Date()}`);
+            return res.status(404).json({ error: 'User not found.' });
+        }
+        console.log("fetchUserProfile",fetchUserProfile)
+        
+        const analyticsData = new Analytics({
+            timestamp: new Date(),
+            method: 'GET',
+            path: '/api/user/profile',
+            user: userId
+        });
+        await analyticsData.save();
+        logger.info(`User Profile Retreived - ${userId} - ${new Date()}`);
+
+        res.status(200).json({ message: 'Profile Retreived successfully', user: fetchUserProfile });
+    } catch (error) {
+        if (error.code === 11000) {
+            logger.error(`Error - Email already exists - ${new Date()}`);
+            return res.status(409).json({ error: "Email already exists." });
+        }
+        logger.error(`Error - ${error.message} - ${new Date()}`);
+        res.status(500).json({ error: error.message });
+    }
+};
+
+/**
  * Update User Profile API
  ** PUT
  * Allows authenticated users to update their profile information.
