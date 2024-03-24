@@ -21,16 +21,16 @@ const dir = path.join(__dirname, 'uploads');
 
 //Apply CORS
 const corsOptions = {
-  origin: config.APP_HOST,
-  "methods": "GET,HEAD,PUT,POST,DELETE",
+  origin: ['http://localhost:3000', config.APP_HOST ],
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
 };
+
 
 app.use(cors(corsOptions));
 app.use(express.static(_root + _nodeModules));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-// app.use(analyticsMiddleware);
 // app.use(contentLength.validateMax({ max: 999 }));
 app.use(helmet());
 logger.info('Starting the server');
