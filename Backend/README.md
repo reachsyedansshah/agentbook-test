@@ -46,6 +46,8 @@ npm start
 
 ## API Documentation
 API detailed documentation can be viewed in docs folder. open index.html
+for the Postman collection, open this:
+https://www.postman.com/grey-spaceship-992954/workspace/agentbook/collection/29412604-c45514ba-f2d4-44ef-8ef0-f51a6ee7d50d?action=share&creator=29412604
 
 ## Authors and Acknowledgment
 Syed Ans Shah
